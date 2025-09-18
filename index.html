@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yamini Pathak - Portfolio</title>
+    <link rel="shortcut icon" href="yp1.png" type="image/x-icon">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust for sticky nav height */
         }
         
         body {
@@ -30,6 +37,51 @@
             margin: 0 auto;
             padding: 20px;
             position: relative;
+        }
+
+        /* Navbar Styles */
+        nav {
+            position: sticky;
+            top: 15px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        body.dark nav {
+            background: rgba(30, 41, 59, 0.85);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark nav a {
+            color: #cbd5e0;
+        }
+
+        nav a:hover, nav a.active {
+            background: #6366f1;
+            color: white;
         }
         
         .theme-toggle {
@@ -168,6 +220,11 @@
             padding: 8px 15px;
             border-radius: 25px;
             background: rgba(99, 102, 241, 0.1);
+            text-decoration: none;
+        }
+
+        body.dark .contact-item {
+            color: #cbd5e0;
         }
         
         .contact-item:hover {
@@ -225,7 +282,7 @@
             background: #f093fb;
         }
         
-        .education-item, .skill-category {
+        .content-item { /* Replaces .education-item */
             margin-bottom: 25px;
             padding: 20px;
             border-left: 4px solid #6366f1;
@@ -234,32 +291,47 @@
             transition: all 0.3s ease;
         }
         
-        .education-item:hover, .skill-category:hover {
+        .content-item:hover {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
             border-left-width: 6px;
             padding-left: 25px;
         }
         
-        .education-item h3 {
+        .content-item h3 {
             color: #4a5568;
             font-size: 1.3em;
             margin-bottom: 8px;
             transition: color 0.3s ease;
         }
         
-        body.dark .education-item h3 {
+        body.dark .content-item h3 {
             color: #cbd5e0;
         }
         
-        .education-details {
+        .item-details { /* Replaces .education-details */
             color: #718096;
             font-size: 0.95em;
             font-style: italic;
             transition: color 0.3s ease;
         }
         
-        body.dark .education-details {
+        body.dark .item-details {
             color: #a0aec0;
+        }
+
+        .skill-category {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid #6366f1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%);
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
+            border-left-width: 6px;
+            padding-left: 25px;
         }
         
         .skills-grid {
@@ -343,6 +415,33 @@
         body.dark .objective-text {
             color: #cbd5e0;
         }
+
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        body.dark .cert-item img {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        body.dark .cert-item img:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
         
         footer {
             text-align: center;
@@ -351,51 +450,69 @@
             font-style: italic;
         }
         
-                    @media (max-width: 768px) {
-                .profile-section {
-                    flex-direction: column;
-                    gap: 20px;
-                    text-align: center;
-                }
-                
-                .profile-info {
-                    text-align: center;
-                }
-                
-                .container {
-                    padding: 15px;
-                }
-                
-                .theme-toggle {
-                    top: 15px;
-                    right: 15px;
-                    padding: 10px 16px;
-                    font-size: 0.9em;
-                }
-                
-                header {
-                    padding: 30px 20px;
-                }
-                
-                h1 {
-                    font-size: 2.2em;
-                }
-                
-                .contact-info {
-                    gap: 15px;
-                }
-                
-                .section {
-                    padding: 25px 20px;
-                }
-                
-                .skills-grid {
-                    grid-template-columns: 1fr;
-                }
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 60px;
             }
+            .profile-section {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .profile-info {
+                text-align: center;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+
+            nav {
+                top: 10px;
+                padding: 5px;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         
         .fade-in {
             animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
         }
         
         @keyframes fadeInUp {
@@ -416,13 +533,23 @@
             <span class="theme-icon">🌙</span>
             <span class="theme-text">Dark Mode</span>
         </button>
+
+        <nav>
+            <ul>
+                <li><a href="#objective">Objective</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+            </ul>
+        </nav>
         
         <header class="fade-in">
             <div class="header-content">
                 <div class="profile-section">
                     <div class="profile-image-container">
-                        <img src="yp1.png" alt="Yamini Pathak" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <!-- <div class="profile-placeholder" style="display: none; width: 160px; height: 160px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #f093fb); display: flex; align-items: center; justify-content: center; color: white; font-size: 3em; font-weight: 300;">YP</div> -->
+                        <img src="yp1.png" alt="Yamini Pathak" class="profile-image">
                     </div>
                     <div class="profile-info">
                         <h1>Yamini Pathak</h1>
@@ -432,44 +559,56 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <span>📍</span>
-                        <span>Kakraligate, Tanakpur, Champawat, Uttarakhand</span>
+                        <span>Kakraligate, Tanakpur, Uttarakhand</span>
                     </div>
                     <div class="contact-item">
                         <span>📞</span>
                         <span>9548281425</span>
                     </div>
-                    <div class="contact-item">
+                    <a href="mailto:Yaminipathak2004@gmail.com" class="contact-item">
                         <span>📧</span>
                         <span>Yaminipathak2004@gmail.com</span>
-                    </div>
+                    </a>
+                    <!-- <a href="https://yp-portfolio-plum.vercel.app/" target="_blank" class="contact-item">
+                        <span>🌐</span>
+                        <span>Portfolio Website</span>
+                    </a> -->
                 </div>
             </div>
         </header>
 
-        <section class="section fade-in">
+        <section id="objective" class="section fade-in">
             <h2>Objective</h2>
             <div class="objective-text">
-                As a Master of Arts student, I consider myself a responsible and orderly person. I am looking forward to my first work experience, eager to apply my academic knowledge in a practical environment and contribute meaningfully to an organization while continuing to learn and grow professionally.
+                As a responsible and orderly Master of Arts student, I am actively seeking my first work experience. I am eager to apply my academic knowledge in a practical environment, contribute meaningfully to an organization, and continue to learn and grow professionally.
             </div>
         </section>
 
-        <section class="section fade-in">
+        <section id="education" class="section fade-in">
             <h2>Education</h2>
-            <div class="education-item">
+            <div class="content-item">
                 <h3>SSJU Almora University</h3>
-                <div class="education-details">Master's of Arts career, in progress</div>
+                <div class="item-details">Master's of Arts, in progress</div>
             </div>
-            <div class="education-item">
+            <div class="content-item">
                 <h3>Government Girls Inter College</h3>
-                <div class="education-details">12th from U.K. Board (2020-2021)</div>
+                <div class="item-details">12th from U.K. Board (2020-2021)</div>
             </div>
-            <div class="education-item">
+            <div class="content-item">
                 <h3>Vivekanand Vidya Mandir</h3>
-                <div class="education-details">10th from U.K. Board (2018-2019)</div>
+                <div class="item-details">10th from U.K. Board (2018-2019)</div>
             </div>
         </section>
 
-        <section class="section fade-in">
+        <section id="experience" class="section fade-in">
+            <h2>Professional Experience</h2>
+            <div class="content-item">
+                <h3>Home Tutor</h3>
+                <div class="item-details">Specialized in preschool-age education for two years, developing foundational skills in young learners.</div>
+            </div>
+        </section>
+
+        <section id="skills" class="section fade-in">
             <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -482,15 +621,23 @@
                 <div class="skill-category">
                     <h3>Computer Skills</h3>
                     <div class="skill-list">
-                        <span class="skill-tag">Text Processor</span>
-                        <span class="skill-tag">Spreadsheet</span>
-                        <span class="skill-tag">Slide Presentation</span>
+                        <span class="skill-tag">MS Word (Text Processor)</span>
+                        <span class="skill-tag">Spreadsheet (MS Excel)</span>
+                        <span class="skill-tag">Slide Presentation (MS PowerPoint)</span>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section id="certifications" class="section fade-in">
+            <h2>Certifications</h2>
+            <div class="cert-grid" style="width: auto; justify-self: center;">
+                <!-- <p class="item-details">No certifications added yet. Please edit the HTML to add them.</p> -->
+                 <img src="yp_cc.png" alt="computer course proof" height="700" width="500">
+            </div>
+        </section>
 
-        <section class="section fade-in">
+        <section id="hobbies" class="section fade-in">
             <h2>Hobbies & Interests</h2>
             <div class="hobbies-grid">
                 <div class="hobby-item">
@@ -521,58 +668,34 @@
         // Theme toggle functionality
         function toggleTheme() {
             const body = document.body;
-            const themeIcon = document.querySelector('.theme-icon');
-            const themeText = document.querySelector('.theme-text');
-            
             body.classList.toggle('dark');
-            
-            if (body.classList.contains('dark')) {
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = body.classList.contains('dark');
+            document.querySelector('.theme-icon').textContent = isDarkMode ? '☀️' : '🌙';
+            document.querySelector('.theme-text').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         }
         
-        // Load saved theme on page load
+        // Load saved theme and set up animations on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark');
-                document.querySelector('.theme-icon').textContent = '☀️';
-                document.querySelector('.theme-text').textContent = 'Light Mode';
+            if (localStorage.getItem('theme') === 'dark') {
+                toggleTheme();
             }
             
-            // Add staggered animation to elements
-            const sections = document.querySelectorAll('.section');
+            // Staggered animation for sections
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
             sections.forEach((section, index) => {
-                section.style.animationDelay = `${index * 0.2}s`;
-            });
-
-            // Add hover effects to hobby items
-            const hobbyItems = document.querySelectorAll('.hobby-item');
-            hobbyItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(240, 147, 251, 0.3) 100%)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%)';
-                });
-            });
-
-            // Add click effects to skill tags
-            const skillTags = document.querySelectorAll('.skill-tag');
-            skillTags.forEach(tag => {
-                tag.addEventListener('click', function() {
-                    this.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 200);
-                });
+                section.style.animationDelay = `${index * 0.1}s`;
+                section.style.animationPlayState = 'paused';
+                observer.observe(section);
             });
         });
     </script>
